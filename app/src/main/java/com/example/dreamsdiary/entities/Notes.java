@@ -15,7 +15,7 @@ public class Notes {
 
     public String body;
 
-    public Date date;
+    public String date; // Тип Date выдаёт ошибку т.к. Room не может конвертировать такой тип данных в SQLite
 
     public String color;
 
