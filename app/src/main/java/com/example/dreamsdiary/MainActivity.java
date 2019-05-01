@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = App.getInstance().getDatabase();
-//
-//        if (db.notesDao().countAll() == 0) {
-//            mTextMessage.setText(0);
-//        }
-//        else {
-//            mTextMessage.setText(db.notesDao().countAll());
-//        }
+
+        if (db.notesDao().countAll() == 0) {
+            mTextMessage.setText(0);
+        }
+        else {
+            mTextMessage.setText(db.notesDao().countAll());
+        }
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

@@ -8,17 +8,17 @@ import android.arch.persistence.room.PrimaryKey;
 public class Label_Notes {
 
     @PrimaryKey(autoGenerate = true)
-    public int ln_id;
+    public Long id;
 
     @ForeignKey(entity = Notes.class,
-            parentColumns = "nt_id",
-            childColumns = "ln_noteId",
+            parentColumns = "id",
+            childColumns = "noteId",
             onDelete = ForeignKey.CASCADE)
-    public int ln_noteId;
+    public Long noteId;
 
     @ForeignKey(entity = Labels.class,
-            parentColumns = "lb_id",
-            childColumns = "ln_labelId",
+            parentColumns = "id",
+            childColumns = "labelId",
             onDelete = ForeignKey.CASCADE)
-    public int ln_labelId;
+    public Long labelId;
 }

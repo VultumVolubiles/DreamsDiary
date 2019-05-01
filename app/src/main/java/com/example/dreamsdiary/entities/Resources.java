@@ -8,15 +8,15 @@ import android.arch.persistence.room.PrimaryKey;
 public class Resources {
 
     @PrimaryKey(autoGenerate = true)
-    public int rs_id;
+    public Long id;
 
-    public String rs_name;
+    public String name;
 
-    public String rs_path;
+    public String path;
 
     @ForeignKey(entity = Notes.class,
             parentColumns = "nt_id",
             childColumns = "rs_noteId",
             onDelete = ForeignKey.CASCADE)
-    public int rs_noteId;
+    public Long noteId;
 }

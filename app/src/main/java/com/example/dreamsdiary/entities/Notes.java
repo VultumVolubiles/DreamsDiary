@@ -3,23 +3,23 @@ package com.example.dreamsdiary.entities;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity
 public class Notes {
 
     @PrimaryKey(autoGenerate = true)
-    public int nt_id;
+    public Long id;
 
-    public String nt_title;
+    public String title;
 
-    public String nt_body;
+    public String body;
 
-    public String nt_date;
+    public Date date;
 
-    public String nt_time;
+    public String color;
 
-    public String nt_color;
+    public Long favorite;
 
-    public boolean nt_favorite;
-
-    public boolean nt_licuid;
+    public Long licuid;
 }

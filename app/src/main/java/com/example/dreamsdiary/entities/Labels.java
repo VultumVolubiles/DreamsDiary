@@ -7,7 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Labels {
 
     @PrimaryKey(autoGenerate = true)
-    public int lb_id;
+    public Long id;
 
-    public String lb_name;
+    public String name;
 }

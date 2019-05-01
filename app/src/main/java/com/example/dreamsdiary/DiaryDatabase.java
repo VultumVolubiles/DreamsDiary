@@ -12,7 +12,7 @@ import com.example.dreamsdiary.entities.Labels;
 import com.example.dreamsdiary.entities.Notes;
 import com.example.dreamsdiary.entities.Resources;
 
-@Database(entities = {Notes.class, Labels.class, Label_Notes.class, Resources.class}, version = 1)
+@Database(entities = {Notes.class, Labels.class, Label_Notes.class, Resources.class}, version = 1, exportSchema = false)
 public abstract class DiaryDatabase extends RoomDatabase {
     public abstract NotesDao notesDao();
     public abstract LabelsDao labelsDao();
