@@ -3,9 +3,7 @@ package com.example.dreamsdiary;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.View;
-import com.example.dreamsdiary.dao.NotesDao;
 import com.example.dreamsdiary.databinding.ActivityNewNoteBinding;
 import com.example.dreamsdiary.entities.Notes;
 
@@ -30,6 +28,6 @@ public class newNoteActivity extends AppCompatActivity {
 
     public void addNote(View view) {
         db.notesDao().insert(activityNewNoteBinding.getNote());
-        this.activityNewNoteBinding.unbind();
+//        this.activityNewNoteBinding.unbind();
     }
 }

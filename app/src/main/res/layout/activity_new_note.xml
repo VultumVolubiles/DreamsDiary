@@ -50,15 +50,14 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="textPersonName"
                                 android:ems="10"
-                                android:id="@+id/editTitle" android:textStyle="bold"
-                                android:importantForAutofill="no"/>
+                                android:id="@+id/editTitle" android:textStyle="bold"/>
                         <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:inputType="textMultiLine"
                                 android:ems="10"
                                 android:id="@+id/editBody"
-                                android:importantForAutofill="no" android:scrollbars="vertical"/>
+                                android:scrollbars="vertical"/>
                     </LinearLayout>
                     <LinearLayout
                             android:id="@+id/info"

@@ -14,13 +14,12 @@ import com.example.dreamsdiary.App;
 import com.example.dreamsdiary.databinding.ActivityMainBinding;
 import com.example.dreamsdiary.entities.Notes;
 
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private String noNotes;
-    private ActivityMainBinding activityMainBinding;
+//    private String noNotes;
+//    private ActivityMainBinding activityMainBinding;
     private DiaryDatabase db;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -46,18 +45,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = App.getInstance().getDatabase();
-        Notes notes = new Notes();
-//        setContentView(R.layout.activity_main);
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        activityMainBinding.setNotes(notes);
+        setContentView(R.layout.activity_main);
+//        Notes notes = new Notes();
+//        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+//        db = App.getInstance().getDatabase();
+//        activityMainBinding.setNotes(notes);
 
-        if (db.notesDao().countAll() == 0) {
-            noNotes = "You don't have notes";
-        }
-        else {
+//        if (db.notesDao().countAll() == 0) {
+//            noNotes = "You don't have notes";
+//        }
+//        else {
 //            noNotes = db.notesDao().countAll();
-        }
+//        }
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
