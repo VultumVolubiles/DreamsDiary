@@ -2,6 +2,7 @@ package com.example.dreamsdiary;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,8 +19,8 @@ import com.example.dreamsdiary.entities.Notes;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-//    private String noNotes;
-//    private ActivityMainBinding activityMainBinding;
+    private String noNotes;
+    private ActivityMainBinding activityMainBinding;
     private DiaryDatabase db;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -46,16 +47,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Notes notes = new Notes();
-//        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-//        db = App.getInstance().getDatabase();
-//        activityMainBinding.setNotes(notes);
+        Notes notes = new Notes();
+        notes.body = "text of note";
+        notes.title = "first note";
+        notes.date = "03/05/2019";
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        db = App.getInstance().getDatabase();
+        activityMainBinding.setNotes(notes);
 
 //        if (db.notesDao().countAll() == 0) {
 //            noNotes = "You don't have notes";
 //        }
 //        else {
-//            noNotes = db.notesDao().countAll();
+//            noNotes = "You have notes";
 //        }
 
         mTextMessage = (TextView) findViewById(R.id.message);
@@ -64,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void addNoteOnClic () {
-
+    public void addNoteOnClic (View view) {
+        Intent intent = new Intent(MainActivity.this, newNoteActivity.class);
+        startActivity(intent);
     }
 
 }
