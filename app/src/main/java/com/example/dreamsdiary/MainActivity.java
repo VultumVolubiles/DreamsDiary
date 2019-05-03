@@ -1,7 +1,5 @@
 package com.example.dreamsdiary;
 
-import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import com.example.dreamsdiary.App;
 import com.example.dreamsdiary.databinding.ActivityMainBinding;
 import com.example.dreamsdiary.entities.Notes;
 
@@ -19,9 +16,10 @@ import com.example.dreamsdiary.entities.Notes;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private String noNotes;
     private ActivityMainBinding activityMainBinding;
     private DiaryDatabase db;
+    private Notes notes;
+    private int count;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,14 +45,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Notes notes = new Notes();
+        notes = new Notes();
+        count = 0;
         notes.body = "text of note";
         notes.title = "first note";
         notes.date = "03/05/2019";
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         db = App.getInstance().getDatabase();
         activityMainBinding.setNotes(notes);
-        activityMainBinding.setCount(db.notesDao().countAll());
+//        System.out.println(db.notesDao().countAll());
+//        count = db.notesDao().countAll();
+//        activityMainBinding.setCount(String.valueOf(count));
 
 //        if (db.notesDao().countAll() == 0) {
 //            noNotes = "You don't have notes";
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void addNoteOnClic (View view) {
+    public void addNoteOnClick (View view) {
         Intent intent = new Intent(MainActivity.this, newNoteActivity.class);
         startActivity(intent);
     }

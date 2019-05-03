@@ -5,19 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.example.dreamsdiary.entities.Notes"/>
-        <import type="java.util.List"/>
 
         <variable
             name="notes"
-            type="Notes"/>
-
-        <variable
-            name="count"
-            type="int"/>
+            type="com.example.dreamsdiary.entities.Notes" />
 
     </data>
 
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
     <android.support.constraint.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -46,8 +43,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@{count}"
-            android:visibility="visible"
+            android:text="0"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,10 +63,11 @@
         <TextView
             android:id="@+id/body"
             android:layout_width="0dp"
-            android:layout_height="69dp"
+            android:layout_height="52dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:maxLines="3"
             android:text="@{notes.body}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -90,7 +88,7 @@
             android:id="@+id/divider"
             android:layout_width="395dp"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -101,14 +99,28 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:clickable="true"
-            android:onClick="addNoteOnClic"
+            android:focusable="auto"
+            android:onClick="addNoteOnClick"
             app:backgroundTint="#F44336"
             app:layout_constraintBottom_toTopOf="@+id/navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@android:drawable/ic_menu_add" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/title_diary"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

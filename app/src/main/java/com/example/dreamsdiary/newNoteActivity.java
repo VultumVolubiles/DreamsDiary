@@ -8,17 +8,17 @@ import android.view.View;
 import com.example.dreamsdiary.databinding.ActivityNewNoteBinding;
 import com.example.dreamsdiary.entities.Notes;
 
-import java.util.Date;
 
 public class newNoteActivity extends AppCompatActivity {
 
     private ActivityNewNoteBinding activityNewNoteBinding;
-    private Notes note = new Notes();
+    private Notes note;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_new_note);
+        setContentView(R.layout.activity_new_note);
+        note = new Notes();
         activityNewNoteBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_note);
         activityNewNoteBinding.setNote(note);
     }
@@ -26,10 +26,10 @@ public class newNoteActivity extends AppCompatActivity {
     public void onSaveClick (View view) {
         DiaryDatabase db = App.getInstance().getDatabase();
         note.color="#DCD3D3";
-        note.date= new Date().toString();
+        note.date= "03/05/2019";
         note.favorite = 1;
         note.licuid = 1;
-        db.notesDao().insert(note);
+//        db.notesDao().insert(note);
 
     }
 }
