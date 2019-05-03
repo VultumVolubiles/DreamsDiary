@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Resources {
 
     @PrimaryKey(autoGenerate = true)
-    public Long id;
+    public int id;
 
     public String name;
 
@@ -18,5 +18,5 @@ public class Resources {
             parentColumns = "nt_id",
             childColumns = "rs_noteId",
             onDelete = ForeignKey.CASCADE)
-    public Long noteId;
+    public int noteId;
 }

@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         db = App.getInstance().getDatabase();
         activityMainBinding.setNotes(notes);
+        activityMainBinding.setCount(db.notesDao().countAll());
 
 //        if (db.notesDao().countAll() == 0) {
 //            noNotes = "You don't have notes";

@@ -12,13 +12,13 @@ public interface NotesDao {
     List<Notes> getAll();
 
     @Query("SELECT * FROM Notes WHERE id = :id")
-    Notes getById(Long id);
+    Notes getById(int id);
 
     @Query("SELECT COUNT(id) FROM Notes")
-    Long countAll();
+    int countAll();
 
     @Query("SELECT COUNT(id) FROM Notes WHERE licuid = 1")
-    Long countLicuid();
+    int countLicuid();
 
     @Query("SELECT * FROM Notes WHERE favorite = 1")
     List<Notes> getFavorite();

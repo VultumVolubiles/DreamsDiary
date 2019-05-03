@@ -9,7 +9,7 @@ import java.util.Date;
 public class Notes {
 
     @PrimaryKey(autoGenerate = true)
-    public Long id;
+    public int id;
 
     public String title;
 
@@ -19,7 +19,7 @@ public class Notes {
 
     public String color;
 
-    public Long favorite;
+    public int favorite;
 
-    public Long licuid;
+    public int licuid;
 }

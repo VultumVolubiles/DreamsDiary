@@ -11,10 +11,10 @@ import java.util.List;
 public interface Label_NotesDao {
 
     @Query("SELECT * FROM Labels WHERE id = (SELECT labelId FROM Label_Notes WHERE noteId = :id)")
-    Labels getAllLabelsForNote(Long id);
+    Labels getAllLabelsForNote(int id);
 
     @Query("SELECT * FROM Notes WHERE id = (SELECT noteId FROM Label_Notes WHERE labelId = :id)")
-    Notes getAllNotesForLabel(Long id);
+    Notes getAllNotesForLabel(int id);
 
     @Insert
     void insert(Label_Notes label_notes);
