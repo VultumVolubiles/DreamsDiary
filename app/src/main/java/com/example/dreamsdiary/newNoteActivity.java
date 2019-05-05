@@ -8,6 +8,8 @@ import android.view.View;
 import com.example.dreamsdiary.databinding.ActivityNewNoteBinding;
 import com.example.dreamsdiary.entities.Notes;
 
+import java.util.Date;
+
 
 public class newNoteActivity extends AppCompatActivity {
 
@@ -21,15 +23,17 @@ public class newNoteActivity extends AppCompatActivity {
         note = new Notes();
         activityNewNoteBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_note);
         activityNewNoteBinding.setNote(note);
+//        activityNewNoteBinding.setCount(0);
     }
 
     public void onSaveClick (View view) {
         DiaryDatabase db = App.getInstance().getDatabase();
-        note.color="#DCD3D3";
-        note.date= "03/05/2019";
-        note.favorite = 1;
-        note.licuid = 1;
-//        db.notesDao().insert(note);
-
+//        note.color="#DCD3D3";
+//        note.date= "03/05/2019";
+//        note.favorite = 1;
+//        note.licuid = 1;
+        db.notesDao().insert(note);
+//        int i = db.notesDao().countAll();
+//        activityNewNoteBinding.setCount(i);
     }
 }

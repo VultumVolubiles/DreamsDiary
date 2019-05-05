@@ -6,20 +6,26 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.dreamsdiary.databinding.ActivityMainBinding;
 import com.example.dreamsdiary.entities.Notes;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private ActivityMainBinding activityMainBinding;
     private DiaryDatabase db;
     private Notes notes;
+    private RecyclerView.Adapter adapter;
     private int count;
+    private ActivityMainBinding activityMainBinding;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_statistic);
                     return true;
                 case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_settings);
+                    Intent intent = new Intent(MainActivity.this, debugActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;
@@ -45,24 +52,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        notes = new Notes();
-        count = 0;
-        notes.body = "text of note";
-        notes.title = "first note";
-        notes.date = "03/05/2019";
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         db = App.getInstance().getDatabase();
+        List<Notes> listNotes = db.notesDao().getAll();
+        if (listNotes.size() > 0){
+            for(Notes note : listNotes){
+                notes = note;
+                break;
+            }
+        }
+        else {
+            notes = new Notes();
+            notes.title = "";
+            notes.body = "Database don't have a notes.";
+        }
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setNotes(notes);
-//        System.out.println(db.notesDao().countAll());
-//        count = db.notesDao().countAll();
-//        activityMainBinding.setCount(String.valueOf(count));
+        RecyclerView rv = findViewById(R.id.recyclerView);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new notesAdapter(listNotes);
+        rv.setAdapter(adapter);
+//        notes = new Notes();
+        count = 0;
 
-//        if (db.notesDao().countAll() == 0) {
-//            noNotes = "You don't have notes";
-//        }
-//        else {
-//            noNotes = "You have notes";
-//        }
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -74,5 +85,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, newNoteActivity.class);
         startActivity(intent);
     }
+
 
 }

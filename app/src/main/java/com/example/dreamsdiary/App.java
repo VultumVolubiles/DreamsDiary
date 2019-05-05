@@ -13,7 +13,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         db =  Room.databaseBuilder(getApplicationContext(),
-                DiaryDatabase.class, "database").build();
+                DiaryDatabase.class, "database").allowMainThreadQueries().build();
     }
 
     public static App getInstance() {

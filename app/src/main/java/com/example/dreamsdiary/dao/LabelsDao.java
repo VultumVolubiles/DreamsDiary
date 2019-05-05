@@ -8,7 +8,7 @@ import java.util.List;
 @Dao
 public interface LabelsDao {
 
-    @Query("SELECT * FROM Labels")
+    @Query("SELECT * FROM labels")
     List<Labels> getAll();
 
     @Insert
