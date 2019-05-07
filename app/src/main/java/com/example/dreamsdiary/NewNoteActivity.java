@@ -17,7 +17,7 @@ import com.example.dreamsdiary.entities.Notes;
 
 public class NewNoteActivity extends AppCompatActivity {
 
-//    private ActivityNewNoteBinding activityNewNoteBinding;
+    private ActivityNewNoteBinding activityNewNoteBinding;
     private Notes note;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -27,15 +27,15 @@ public class NewNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_note);
-        note = new Notes();
+//        note = new Notes();
 //        activityNewNoteBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_note);
 //        activityNewNoteBinding.setNote(note);
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
         adapter = new NewNoteViewPagerAdapter(getSupportFragmentManager());
         //adding fragments
-        adapter.AddFragment(new FragmentInfo(), "Info");
         adapter.AddFragment(new FragmentNote(), "Note");
+        adapter.AddFragment(new FragmentInfo(), "Info");
         adapter.AddFragment(new FragmentResources(), "Resources");
         //adapter setup
         viewPager.setAdapter(adapter);
