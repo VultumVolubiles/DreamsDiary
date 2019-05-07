@@ -10,9 +10,10 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".debugActivity"></activity>
+        <activity android:name=".StatisticActivity" />
+        <activity android:name=".DebugActivity" />
         <activity
-            android:name=".newNoteActivity"
+            android:name=".NewNoteActivity"
             android:label="@string/newNote" />
         <activity
             android:name=".MainActivity"

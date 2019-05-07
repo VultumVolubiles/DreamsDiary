@@ -1,5 +1,6 @@
 package com.example.dreamsdiary;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,13 @@ class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> {
         holder.title.setText(notes.get(position).title);
         holder.body.setText(notes.get(position).body);
         holder.date.setText(notes.get(position).date);
+        if (notes.get(position).favorite == 1) {
+            holder.favorite.setTextColor(Color.rgb(255,193,7));
+        }
+        if (notes.get(position).licuid == 1) {
+            holder.licuid.setTextColor(Color.rgb(156,39,176));
+        }
+
     }
 
     @Override
@@ -40,6 +48,8 @@ class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> {
         public TextView title;
         public TextView body;
         public TextView date;
+        public TextView favorite;
+        public TextView licuid;
         public View divider;
 
         public ViewHolder(View itemView) {
@@ -47,6 +57,8 @@ class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> {
             title = itemView.findViewById(R.id.title);
             body = itemView.findViewById(R.id.body);
             date = itemView.findViewById(R.id.date);
+            favorite = itemView.findViewById(R.id.favorite);
+            licuid = itemView.findViewById(R.id.licuid);
             divider = itemView.findViewById(R.id.divider);
         }
 

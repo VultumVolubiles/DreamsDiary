@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.dreamsdiary.databinding.ActivityMainBinding;
 import com.example.dreamsdiary.entities.Notes;
@@ -30,17 +29,20 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        Intent intent;
+
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_diary:
-                    mTextMessage.setText(R.string.title_diary);
+
                     return true;
                 case R.id.navigation_statistic:
-                    mTextMessage.setText(R.string.title_statistic);
+                    intent = new Intent(MainActivity.this, StatisticActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_settings:
-                    Intent intent = new Intent(MainActivity.this, debugActivity.class);
+                    intent = new Intent(MainActivity.this, DebugActivity.class);
                     startActivity(intent);
                     return true;
             }
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNoteOnClick (View view) {
-        Intent intent = new Intent(MainActivity.this, newNoteActivity.class);
+        Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
         startActivity(intent);
     }
 
