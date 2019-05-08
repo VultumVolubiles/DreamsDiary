@@ -1,52 +1,50 @@
 package com.example.dreamsdiary;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+//import android.databinding.DataBindingUtil;
+//import com.example.dreamsdiary.databinding.ActivityMainBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import com.example.dreamsdiary.databinding.ActivityMainBinding;
-import com.example.dreamsdiary.entities.Notes;
 
-import java.util.List;
-
+import com.example.dreamsdiary.MainActivityFragments.FragmentDebug;
+import com.example.dreamsdiary.MainActivityFragments.FragmentDiary;
+import com.example.dreamsdiary.MainActivityFragments.FragmentStatistic;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
-    private DiaryDatabase db;
-    private Notes notes;
-    private RecyclerView.Adapter adapter;
-    private int count;
-    private ActivityMainBinding activityMainBinding;
+//    private ActivityMainBinding activityMainBinding;
+    private Fragment fragment;
+    private FragmentManager fragmentManager;
+    private BottomNavigationView bottomNavigationView;
+    private FragmentTransaction fragmentTransaction;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        Intent intent;
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            fragmentTransaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_diary:
-
-                    return true;
+                    fragment = new FragmentDiary();
+                    break;
                 case R.id.navigation_statistic:
-                    intent = new Intent(MainActivity.this, StatisticActivity.class);
-                    startActivity(intent);
-                    return true;
+                    fragment = new FragmentStatistic();
+                    break;
                 case R.id.navigation_settings:
-                    intent = new Intent(MainActivity.this, DebugActivity.class);
-                    startActivity(intent);
-                    return true;
+                    fragment = new FragmentDebug();
+                    break;
             }
-            return false;
+            fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+            return true;
         }
     };
 
@@ -54,32 +52,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db = App.getInstance().getDatabase();
-        List<Notes> listNotes = db.notesDao().getAll();
-        if (listNotes.size() > 0){
-            for(Notes note : listNotes){
-                notes = note;
-                break;
-            }
-        }
-        else {
-            notes = new Notes();
-            notes.title = "";
-            notes.body = "Database don't have a notes.";
-        }
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        activityMainBinding.setNotes(notes);
-        RecyclerView rv = findViewById(R.id.recyclerView);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new notesAdapter(listNotes);
-        rv.setAdapter(adapter);
-//        notes = new Notes();
-        count = 0;
+        fragment = new FragmentDiary();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(new FragmentStatistic(), "Statistic");
+        fragmentTransaction.add(new FragmentDiary(), "Diary");
+        fragmentTransaction.add(new FragmentDebug(), "Debug");
+        fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
 
+//        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
 

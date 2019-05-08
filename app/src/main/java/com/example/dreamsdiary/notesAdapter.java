@@ -11,7 +11,7 @@ import com.example.dreamsdiary.entities.Notes;
 
 import java.util.List;
 
-class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> {
+public class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> {
 
     List<Notes> notes;
 

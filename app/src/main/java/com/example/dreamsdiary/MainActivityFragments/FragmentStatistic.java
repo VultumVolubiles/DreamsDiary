@@ -1,4 +1,4 @@
-package com.example.dreamsdiary.NewNoteViewPager;
+package com.example.dreamsdiary.MainActivityFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,16 +10,17 @@ import android.view.ViewGroup;
 
 import com.example.dreamsdiary.R;
 
-public class FragmentInfo extends Fragment {
-    View view;
-    public FragmentInfo () {
+public class FragmentStatistic extends Fragment {
 
+    View view;
+
+    public FragmentStatistic() {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_new_note_info, container, false);
+        view = inflater.inflate(R.layout.fragment_statistic, container, false);
         return view;
     }
 }

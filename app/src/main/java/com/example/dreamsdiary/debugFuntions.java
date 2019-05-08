@@ -1,10 +1,14 @@
 package com.example.dreamsdiary;
 
+import android.view.View;
+
 import com.example.dreamsdiary.entities.Notes;
 
 import java.util.List;
 
 public class debugFuntions {
+
+    DiaryDatabase db = App.getInstance().getDatabase();
 
     public void fillNotes(DiaryDatabase db) {
         List<Notes> notes;
@@ -53,5 +57,25 @@ public class debugFuntions {
             db.notesDao().delete(note);
         }
 
+    }
+
+    public void onClickDeleteAllNotes(View view) {
+        deleteAllNotes(db);
+    }
+
+    public void onClickFillNotes(View view) {
+        fillNotes(db);
+    }
+
+    public void onClicAddFavoriteNote(View view) {
+        addFavoriteNote(db);
+    }
+
+    public void onClickAddLicuidNote(View view) {
+        addLicuidNote(db);
+    }
+
+    public void onClickAddLFNote(View view) {
+        addLFNote(db);
     }
 }
