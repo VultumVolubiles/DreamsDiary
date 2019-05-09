@@ -3,6 +3,7 @@
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
@@ -13,16 +14,17 @@
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:background="@color/colorFieldBackground"
+        android:background="@drawable/rectangle"
         android:maxLines="3"
         android:minLines="3"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text=""
         android:textColor="@color/colorText"
-        android:paddingHorizontal="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,12 +38,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
-        android:background="@color/colorFieldBackground"
+        android:background="@drawable/rectangle"
         android:maxLines="1"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text=""
         android:textColor="@color/colorText"
         android:textStyle="bold"
-        android:paddingHorizontal="4dp"
         app:layout_constraintEnd_toStartOf="@+id/date"
         app:layout_constraintStart_toEndOf="@+id/licuid"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,10 +56,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
-        android:background="@color/colorFieldBackground"
+        android:background="@drawable/rectangle"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text=""
         android:textColor="@color/colorText"
-        android:paddingHorizontal="4dp"
         app:layout_constraintBottom_toTopOf="@+id/body"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -66,34 +70,32 @@
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
         android:layout_weight="1"
-        android:background="@color/colorText"
+        android:background="@color/colorSeparator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/body" />
 
-    <TextView
-        android:id="@+id/licuid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:text="L"
-        android:textColor="#68686868"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/favorite"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
+    <ImageView
         android:id="@+id/favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="F"
-        android:textColor="#68686868"
-        android:textStyle="bold"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/licuid"
+        app:srcCompat="@drawable/ic_favorite" />
+
+    <ImageView
+        android:id="@+id/licuid"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintStart_toEndOf="@+id/favorite"
+        app:layout_constraintTop_toTopOf="@+id/title"
+        app:srcCompat="@drawable/ic_licuid" />
+
 </android.support.constraint.ConstraintLayout>
 
 

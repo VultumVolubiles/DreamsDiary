@@ -1,8 +1,6 @@
 package com.example.dreamsdiary;
 
 import android.content.Intent;
-//import android.databinding.DataBindingUtil;
-//import com.example.dreamsdiary.databinding.ActivityMainBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -19,11 +17,12 @@ import com.example.dreamsdiary.MainActivityFragments.FragmentStatistic;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private ActivityMainBinding activityMainBinding;
     private Fragment fragment;
     private FragmentManager fragmentManager;
     private BottomNavigationView bottomNavigationView;
     private FragmentTransaction fragmentTransaction;
+    private debugFuntions debug = new debugFuntions();
+    private DiaryDatabase db = App.getInstance().getDatabase();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,11 +59,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(new FragmentDebug(), "Debug");
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
 
-//        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
         bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
 
     public void addNoteOnClick (View view) {
@@ -72,5 +68,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickDeleteAllNotes(View view) {
+        debug.deleteAllNotes(db);
+    }
 
+    public void onClickFillNotes(View view) {
+        debug.fillNotes(db);
+    }
+
+    public void onClicAddFavoriteNote(View view) {
+        debug.addFavoriteNote(db);
+    }
+
+    public void onClickAddLicuidNote(View view) {
+        debug.addLicuidNote(db);
+    }
+
+    public void onClickAddLFNote(View view) {
+        debug.addLFNote(db);
+    }
 }

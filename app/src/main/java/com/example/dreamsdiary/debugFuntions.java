@@ -59,23 +59,5 @@ public class debugFuntions {
 
     }
 
-    public void onClickDeleteAllNotes(View view) {
-        deleteAllNotes(db);
-    }
 
-    public void onClickFillNotes(View view) {
-        fillNotes(db);
-    }
-
-    public void onClicAddFavoriteNote(View view) {
-        addFavoriteNote(db);
-    }
-
-    public void onClickAddLicuidNote(View view) {
-        addLicuidNote(db);
-    }
-
-    public void onClickAddLFNote(View view) {
-        addLFNote(db);
-    }
 }

@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 
 import com.example.dreamsdiary.R;
 import com.example.dreamsdiary.databinding.FragmentNewNoteNoteBinding;
+import com.example.dreamsdiary.entities.Notes;
 
 public class FragmentNote extends Fragment {
     View view;
-
-    String title;
-    String body;
+    Notes note;
 
     FragmentNewNoteNoteBinding noteBinding;
     public FragmentNote () {
@@ -26,13 +25,12 @@ public class FragmentNote extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        view = inflater.inflate(R.layout.fragment_new_note_note, container, false);
         noteBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_note_note, container, false);
         view = noteBinding.getRoot();
-        noteBinding.setTitle(title);
-        noteBinding.setBody(body);
+        note = new Notes();
+        noteBinding.setNote(note);
         return view;
-
     }
+
 
 }

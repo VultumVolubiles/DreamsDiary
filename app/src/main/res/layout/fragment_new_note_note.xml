@@ -7,13 +7,8 @@
     <data>
 
         <variable
-            name = "title"
-            type = "String"/>
-
-        <variable
-            name = "body"
-            type = "String"/>
-
+            name = "note"
+            type = "com.example.dreamsdiary.entities.Notes"/>
 
     </data>
 
@@ -22,20 +17,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onClickTheme1"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonLicuid"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonLicuid"
+        app:srcCompat="@drawable/rectangle_theme1" />
+
+    <ImageButton
+        android:id="@+id/imageButtonLicuid"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:background="#00FFFFFF"
+        android:onClick="onClickLicuid"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/editDate"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonFavorite"
+        app:srcCompat="@drawable/ic_licuid" />
+
+    <ImageView
+        android:id="@+id/imageButtonFavorite"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:background="#00FFFFFF"
+        android:onClick="onClickFavorite"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonLicuid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_favorite" />
+
     <EditText
         android:id="@+id/editTitle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/rectangle"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@={title}"
+        android:hint="Title"
+        android:inputType="textPersonName|textCapSentences"
+        android:paddingLeft="5dp"
+        android:paddingTop="1dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp"
+        android:text="@={note.title}"
+        android:textAllCaps="false"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorBorder"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <EditText
         android:id="@+id/editBody"
@@ -45,14 +82,54 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/rectangle"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:text="@={body}"
+        android:hint="Body"
+        android:inputType="textMultiLine|textCapSentences"
+        android:paddingLeft="5dp"
+        android:paddingTop="1dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp"
+        android:text="@={note.body}"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorBorder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTitle" />
+
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rectangle"
+        android:ems="10"
+        android:hint="dd/mm/yyyy"
+        android:inputType="date|datetime"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:paddingLeft="5dp"
+        android:paddingTop="1dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp"
+        android:text="@={note.date}"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorBorder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onClickTheme2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:srcCompat="@drawable/rectangle_theme2" />
 
 </android.support.constraint.ConstraintLayout>
 </layout>

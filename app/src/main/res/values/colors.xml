@@ -3,7 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#F44336</color>
-    <color name="colorBackground">#EFEFEF</color>
-    <color name="colorFieldBackground">#D7D7D7</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBorder">#D7D7D7</color>
+    <color name="colorSeparator">#202020</color>
+    <color name="colorFieldBackground">#FAFAFA</color>
+    <color name="colorFieldBorder">#E2E2E2</color>
+    <color name="colorIconEnabledF">#FFC107</color>
+    <color name="colorIconEnabledL">#673AB7</color>
+    <color name="colorIconDisabled">#D7D7D7</color>
     <color name="colorText">#474747</color>
+    <color name="colorNoteBorderTheme1">#F75B50</color>
+    <color name="colorNoteBackgroundTheme1">#FFFFFF</color>
+    <color name="colorNoteFieldBackgroundTheme1">#FAFAFA</color>
+    <color name="colorNoteBorderTheme2">#4D944A</color>
+    <color name="colorNoteBackgroundTheme2">#CAFFCA</color>
+    <color name="colorNoteFieldBackgroundTheme2">#87DB87</color>
 </resources>

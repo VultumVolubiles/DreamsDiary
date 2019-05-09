@@ -5,9 +5,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.dreamsdiary.NewNoteFragments.FragmentInfo;
+
 import com.example.dreamsdiary.NewNoteFragments.FragmentNote;
 import com.example.dreamsdiary.NewNoteFragments.FragmentResources;
 import com.example.dreamsdiary.entities.Notes;
@@ -30,43 +30,57 @@ public class NewNoteActivity extends AppCompatActivity {
         adapter = new NewNoteViewPagerAdapter(getSupportFragmentManager());
         //adding fragments
         adapter.AddFragment(new FragmentNote(), "Note");
-        adapter.AddFragment(new FragmentInfo(), "Info");
         adapter.AddFragment(new FragmentResources(), "Resources");
         //adapter setup
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-//        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
-//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//
-//            @Override
-//            public void onSelectedDayChange(CalendarView view, int year,
-//                                            int month, int dayOfMonth) {
-//                int mYear = year;
-//                int mMonth = month;
-//                int mDay = dayOfMonth;
-//                String selectedDate = new StringBuilder().append(mMonth + 1)
-//                        .append("-").append(mDay).append("-").append(mYear)
-//                        .append(" ").toString();
-//                note.date = selectedDate;
-//            }
-//        });
-
     }
 
-    public void onSaveClick (View view) {
-//        TextView tView = findViewById(R.id.editTitle);
-        Notes newNote;
-        note.title = "j";
-        String body;
-        String date;
-        String color = "#33CCB366";
-        int favorite;
-        int licuid;
-
-        newNote = new Notes();
-//        newNote = new Notes(title,body,date,color,favorite,licuid);
+    public void onClickSave(View view) {
+        TextView v = findViewById(R.id.editDate);
+        note.date = v.getText().toString();
+        v = findViewById(R.id.editTitle);
+        note.title = v.getText().toString();
+        v = findViewById(R.id.editBody);
+        note.body = v.getText().toString();
         DiaryDatabase db = App.getInstance().getDatabase();
-        db.notesDao().insert(newNote);
+        db.notesDao().insert(note);
+        finish();
+    }
+
+    public void onClickCancel (View view) {
+        finish();
+    }
+
+    public void onClickFavorite (View view) {
+        if (note.favorite == 0) {
+            note.favorite += 1;
+            ImageView fav = findViewById(R.id.imageButtonFavorite);
+            fav.setImageResource(R.drawable.ic_favorite_enabled);
+        }
+        else {
+            note.favorite -=1;
+            ImageView fav = findViewById(R.id.imageButtonFavorite);
+            fav.setImageResource(R.drawable.ic_favorite);
+        }
+    }
+    public void onClickLicuid (View view) {
+        if (note.licuid == 0) {
+            note.licuid += 1;
+            ImageView lic = findViewById(R.id.imageButtonLicuid);
+            lic.setImageResource(R.drawable.ic_licuid_enabled);
+        }
+        else {
+            note.licuid -=1;
+            ImageView lic = findViewById(R.id.imageButtonLicuid);
+            lic.setImageResource(R.drawable.ic_licuid);
+        }
+    }
+    public void onClickTheme1 (View view) {
+        note.color = "#F75B50";
+    }
+    public void onClickTheme2(View view) {
+        note.color = "#4D944A";
     }
 }

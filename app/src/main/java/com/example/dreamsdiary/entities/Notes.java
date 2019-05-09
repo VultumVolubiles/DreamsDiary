@@ -45,7 +45,7 @@ public class Notes {
         this.title = "";
         this.body = "";
         Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.date = format.format(date);
         this.color = "#DCD3D3";
         this.favorite = 0;
@@ -54,7 +54,7 @@ public class Notes {
     public Notes(String title, String body, Date date, String color, int favorite, int licuid) {
         this.title = title;
         this.body = body;
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.date = format.format(date);
         this.color = color;
         this.favorite = favorite;
