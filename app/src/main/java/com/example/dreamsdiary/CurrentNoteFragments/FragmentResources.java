@@ -1,4 +1,4 @@
-package com.example.dreamsdiary.NewNoteFragments;
+package com.example.dreamsdiary.CurrentNoteFragments;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -8,13 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.dreamsdiary.R;
-import com.example.dreamsdiary.databinding.FragmentNewNoteResourcesBinding;
+import com.example.dreamsdiary.databinding.FragmentCurrentNoteResourcesBinding;
 
 public class FragmentResources extends Fragment {
     View view;
-    FragmentNewNoteResourcesBinding resourcesBinding;
+    FragmentCurrentNoteResourcesBinding resourcesBinding;
     String res;
 
     public FragmentResources () {
@@ -24,7 +23,7 @@ public class FragmentResources extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        resourcesBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_note_resources, container, false);
+        resourcesBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_current_note_resources, container, false);
         view = resourcesBinding.getRoot();
         res = "Resources";
         resourcesBinding.setResources(res);

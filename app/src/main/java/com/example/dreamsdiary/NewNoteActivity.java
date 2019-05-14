@@ -15,16 +15,26 @@ import com.example.dreamsdiary.entities.Notes;
 
 public class NewNoteActivity extends AppCompatActivity {
 
-    private Notes note;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private NewNoteViewPagerAdapter adapter;
+        private Notes note;
+        private TabLayout tabLayout;
+        private ViewPager viewPager;
+        private NewNoteViewPagerAdapter adapter;
+        private boolean edit;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_note);
-        note = new Notes();
+        setContentView(R.layout.activity_current_note);
+        Bundle arguments = getIntent().getExtras();
+        if (arguments!=null) {
+            note = (Notes) arguments.getSerializable(Notes.class.getSimpleName());
+            this.edit = true;
+        }
+        else {
+            note = new Notes();
+            this.edit = false;
+        }
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         adapter = new NewNoteViewPagerAdapter(getSupportFragmentManager());
@@ -38,14 +48,19 @@ public class NewNoteActivity extends AppCompatActivity {
     }
 
     public void onClickSave(View view) {
-        TextView v = findViewById(R.id.editDate);
+        TextView v = findViewById(R.id.currentNoteDate);
         note.date = v.getText().toString();
-        v = findViewById(R.id.editTitle);
+        v = findViewById(R.id.currentNoteTitle);
         note.title = v.getText().toString();
-        v = findViewById(R.id.editBody);
+        v = findViewById(R.id.currentNoteBody);
         note.body = v.getText().toString();
         DiaryDatabase db = App.getInstance().getDatabase();
+        if (this.edit) {
+            db.notesDao().update(note);
+        }
+        else {
         db.notesDao().insert(note);
+        }
         finish();
     }
 

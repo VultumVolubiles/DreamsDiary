@@ -15,7 +15,7 @@ import com.example.dreamsdiary.MainActivityFragments.FragmentDebug;
 import com.example.dreamsdiary.MainActivityFragments.FragmentDiary;
 import com.example.dreamsdiary.MainActivityFragments.FragmentStatistic;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private Fragment fragment;
     private FragmentManager fragmentManager;
@@ -64,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNoteOnClick (View view) {
-        Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
+        Intent intent = new Intent(MainActivity.this, CurrentNoteActivity.class);
         startActivity(intent);
+
     }
 
     public void onClickDeleteAllNotes(View view) {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         debug.fillNotes(db);
     }
 
-    public void onClicAddFavoriteNote(View view) {
+    public void onClickAddFavoriteNote(View view) {
         debug.addFavoriteNote(db);
     }
 

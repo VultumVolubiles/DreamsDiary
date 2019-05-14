@@ -10,6 +10,7 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CurrentNoteActivity"></activity>
         <activity
             android:name=".NewNoteActivity"
             android:label="@string/newNote" />

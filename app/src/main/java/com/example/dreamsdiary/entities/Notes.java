@@ -5,12 +5,12 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import java.text.DateFormat;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity(tableName = "notes")
-public class Notes {
+public class Notes implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

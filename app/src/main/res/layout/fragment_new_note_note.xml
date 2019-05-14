@@ -35,7 +35,7 @@
         android:background="#00FFFFFF"
         android:onClick="onClickLicuid"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/editDate"
+        app:layout_constraintBottom_toBottomOf="@+id/currentNoteDate"
         app:layout_constraintStart_toEndOf="@+id/imageButtonFavorite"
         app:srcCompat="@drawable/ic_licuid" />
 
@@ -52,7 +52,7 @@
         app:srcCompat="@drawable/ic_favorite" />
 
     <EditText
-        android:id="@+id/editTitle"
+        android:id="@+id/currentNoteTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -72,10 +72,10 @@
         android:textColorHint="@color/colorBorder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
+        app:layout_constraintTop_toBottomOf="@+id/currentNoteDate" />
 
     <EditText
-        android:id="@+id/editBody"
+        android:id="@+id/currentNoteBody"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -97,10 +97,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/currentNoteTitle" />
 
     <EditText
-        android:id="@+id/editDate"
+        android:id="@+id/currentNoteDate"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

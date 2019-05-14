@@ -15,16 +15,18 @@ import java.util.List;
 
 public class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> {
 
-    List<Notes> notes;
+    private List<Notes> notes;
+    private OnNoteListener mOnNoteListener;
 
-    public notesAdapter(List<Notes> notes) {
+    public notesAdapter(List<Notes> notes, OnNoteListener onNoteListener) {
         this.notes = notes;
+        this.mOnNoteListener = onNoteListener;
     }
 
     @Override
     public notesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.note, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mOnNoteListener);
     }
 
     @Override
@@ -68,7 +70,7 @@ public class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> 
         return this.notes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ConstraintLayout container;
         public TextView title;
         public TextView body;
@@ -76,8 +78,9 @@ public class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> 
         public ImageView favorite;
         public ImageView licuid;
         public View divider;
+        OnNoteListener onNoteListener;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
             title = itemView.findViewById(R.id.title);
@@ -86,7 +89,17 @@ public class notesAdapter extends RecyclerView.Adapter<notesAdapter.ViewHolder> 
             favorite = itemView.findViewById(R.id.favorite);
             licuid = itemView.findViewById(R.id.licuid);
             divider = itemView.findViewById(R.id.divider);
+
+            this.onNoteListener = onNoteListener;
+            itemView.setOnClickListener(this);
         }
 
+        public void onClick(View view) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener {
+        void onNoteClick(int position);
     }
 }
