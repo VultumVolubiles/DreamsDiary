@@ -20,6 +20,9 @@ public interface NotesDao {
     @Query("SELECT COUNT(notes.id) FROM notes WHERE licuid = 1")
     int countLicuid();
 
+    @Query("SELECT COUNT(notes.id) FROM notes WHERE favorite = 1")
+    int countFavorite();
+
     @Query("SELECT * FROM notes WHERE favorite = 1")
     List<Notes> getFavorite();
 

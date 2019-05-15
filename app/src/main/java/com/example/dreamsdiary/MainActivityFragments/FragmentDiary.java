@@ -52,7 +52,7 @@ public class FragmentDiary extends Fragment implements notesAdapter.OnNoteListen
         List<Notes> listNotes = db.notesDao().getAll();
         Notes note = listNotes.get(position);
         Intent intent = new Intent(getContext(), CurrentNoteActivity.class);
-        intent.putExtra(Notes.class.getSimpleName(), note);
+        intent.putExtra("id", note.id);
         startActivity(intent);
     }
 }

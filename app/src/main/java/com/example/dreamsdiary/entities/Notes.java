@@ -59,7 +59,5 @@ public class Notes implements Serializable {
         this.color = color;
         this.favorite = favorite;
         this.licuid = licuid;
-        Date a = new Date();
-        a.getDate();
     }
 }

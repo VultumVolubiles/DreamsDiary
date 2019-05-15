@@ -8,12 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewNoteViewPagerAdapter extends FragmentPagerAdapter {
+public class NoteViewPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> fragmentListTitles = new ArrayList<>();
 
-    public NewNoteViewPagerAdapter(FragmentManager fm) {
+    public NoteViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -36,6 +36,10 @@ public class NewNoteViewPagerAdapter extends FragmentPagerAdapter {
     public void AddFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         fragmentListTitles.add(title);
+    }
+
+    public void ReplaceFragment(int position, Fragment newFragment) {
+        fragmentList.set(position, newFragment);
     }
 
 

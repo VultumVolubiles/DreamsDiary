@@ -1,5 +1,6 @@
 package com.example.dreamsdiary;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.dreamsdiary.NewNoteFragments.FragmentNote;
 import com.example.dreamsdiary.NewNoteFragments.FragmentResources;
 import com.example.dreamsdiary.entities.Notes;
@@ -18,17 +18,18 @@ public class NewNoteActivity extends AppCompatActivity {
         private Notes note;
         private TabLayout tabLayout;
         private ViewPager viewPager;
-        private NewNoteViewPagerAdapter adapter;
+        private NoteViewPagerAdapter adapter;
         private boolean edit;
+        private int id;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_note);
-        setContentView(R.layout.activity_current_note);
+            setContentView(R.layout.activity_new_note);
         Bundle arguments = getIntent().getExtras();
         if (arguments!=null) {
-            note = (Notes) arguments.getSerializable(Notes.class.getSimpleName());
+            id = (int) arguments.getSerializable("id");
+            note = App.getInstance().getDatabase().notesDao().getById(id);
             this.edit = true;
         }
         else {
@@ -37,9 +38,11 @@ public class NewNoteActivity extends AppCompatActivity {
         }
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
-        adapter = new NewNoteViewPagerAdapter(getSupportFragmentManager());
+        adapter = new NoteViewPagerAdapter(getSupportFragmentManager());
         //adding fragments
-        adapter.AddFragment(new FragmentNote(), "Note");
+        FragmentNote fragmentNote = new FragmentNote();
+        fragmentNote.setNote(note);
+        adapter.AddFragment(fragmentNote, "Note");
         adapter.AddFragment(new FragmentResources(), "Resources");
         //adapter setup
         viewPager.setAdapter(adapter);
@@ -57,6 +60,9 @@ public class NewNoteActivity extends AppCompatActivity {
         DiaryDatabase db = App.getInstance().getDatabase();
         if (this.edit) {
             db.notesDao().update(note);
+            Intent intent = new Intent();
+            intent.putExtra("id", note.id);
+            setResult(RESULT_OK, intent);
         }
         else {
         db.notesDao().insert(note);
@@ -65,6 +71,9 @@ public class NewNoteActivity extends AppCompatActivity {
     }
 
     public void onClickCancel (View view) {
+        Intent intent = new Intent();
+        intent.putExtra("id", note.id);
+        setResult(RESULT_OK, intent);
         finish();
     }
 

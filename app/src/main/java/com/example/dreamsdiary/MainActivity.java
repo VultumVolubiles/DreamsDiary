@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity{
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    public void addNoteOnClick (View view) {
-        Intent intent = new Intent(MainActivity.this, CurrentNoteActivity.class);
+    public void onClickAddNote(View view) {
+        Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
         startActivity(intent);
 
     }
