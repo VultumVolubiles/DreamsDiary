@@ -35,8 +35,8 @@ public class CurrentNoteActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         adapter = new NoteViewPagerAdapter(getSupportFragmentManager());
         //adding fragments
-        adapter.AddFragment(fragmentNote, "Note");
-        adapter.AddFragment(new FragmentResources(), "Resources");
+        adapter.AddFragment(fragmentNote, getString(R.string.tabNote));
+        adapter.AddFragment(new FragmentResources(), getString(R.string.tabResources));
         //adapter setup
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -58,9 +58,16 @@ public class CurrentNoteActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK) {
 //            note = App.getInstance().getDatabase().notesDao().getById(data.getIntExtra("id", id));
-//            FragmentCurrentNote fn = new FragmentCurrentNote();
-//            fn.setCurrentNote(note);
-//            adapter.ReplaceFragment(0, fn);
+//            FragmentCurrentNote fragmentNote = new FragmentCurrentNote();
+//            Bundle arguments = getIntent().getExtras();
+//            if (arguments!=null) {
+//                id = (int) arguments.getSerializable("id");
+//                fragmentNote.setArguments(arguments);
+//                note = App.getInstance().getDatabase().notesDao().getById(id);
+//            }
+//            adapter.ReplaceFragment(0, fragmentNote);
+//            viewPager.setAdapter(adapter);
+//            tabLayout.setupWithViewPager(viewPager);
         }
         else {
 //            note = App.getInstance().getDatabase().notesDao().getById(data.getIntExtra("id", id));

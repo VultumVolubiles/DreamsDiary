@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Artifact</string>
+    <string name="noNotes">У вас ещё нет записей</string>
+    <string name="title_diary">Дневник</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_statistic">Статистика</string>
+    <string name="newNote">Новая запись</string>
+    <string name="buttonCancel">Назад</string>
+    <string name="buttonEdit">Редактировать</string>
+    <string name="buttonSave">Сохранить</string>
+    <string name="tabNote">Запись</string>
+    <string name="tabResources">Материалы</string>
+    <string name="hintBody">Текст записи</string>
+    <string name="hintTitle">Заголовок</string>
+    <string name="statisticAllNotes">Всего записей</string>
+    <string name="statisticFavoriteNotes">Избранные</string>
+    <string name="statisticLicuidNotes">Осознанные</string>
+    <string name="hintDateFormat">гггг/мм/дд</string>
+</resources>

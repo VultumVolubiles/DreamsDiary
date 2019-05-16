@@ -5,15 +5,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.MovementMethod;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dreamsdiary.App;
 import com.example.dreamsdiary.R;
 import com.example.dreamsdiary.databinding.FragmentCurrentNoteNoteBinding;
 import com.example.dreamsdiary.entities.Notes;
+
+import org.w3c.dom.Text;
 
 public class FragmentCurrentNote extends Fragment {
     View view;
@@ -38,6 +43,8 @@ public class FragmentCurrentNote extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentCurrentNoteNoteBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_current_note_note, container, false);
         view = fragmentCurrentNoteNoteBinding.getRoot();
+        TextView body = view.findViewById(R.id.currentNoteBody);
+        body.setMovementMethod(new ScrollingMovementMethod());
         note = App.getInstance().getDatabase().notesDao().getById(getArguments().getInt("id"));
         lic = view.findViewById(R.id.imageButtonLicuid);
         fav = view.findViewById(R.id.imageButtonFavorite);

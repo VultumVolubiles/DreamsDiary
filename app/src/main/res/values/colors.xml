@@ -18,4 +18,5 @@
     <color name="colorNoteBorderTheme2">#4D944A</color>
     <color name="colorNoteBackgroundTheme2">#CAFFCA</color>
     <color name="colorNoteFieldBackgroundTheme2">#87DB87</color>
+    <color name="colorStatisticAllNotes">#33B5E5</color>
 </resources>

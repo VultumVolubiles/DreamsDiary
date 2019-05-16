@@ -21,9 +21,9 @@
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBackground"
+            android:background="@android:color/holo_red_light"
             app:itemBackground="@android:color/holo_red_light"
             app:itemIconTint="#DCD3D3"
             app:itemTextColor="@android:color/background_light"

@@ -15,6 +15,14 @@ import com.example.dreamsdiary.MainActivityFragments.FragmentDebug;
 import com.example.dreamsdiary.MainActivityFragments.FragmentDiary;
 import com.example.dreamsdiary.MainActivityFragments.FragmentStatistic;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.PieChartData;
+import lecho.lib.hellocharts.model.SliceValue;
+import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.PieChartView;
+
 public class MainActivity extends AppCompatActivity{
 
     private Fragment fragment;
@@ -23,6 +31,8 @@ public class MainActivity extends AppCompatActivity{
     private FragmentTransaction fragmentTransaction;
     private debugFuntions debug = new debugFuntions();
     private DiaryDatabase db = App.getInstance().getDatabase();
+    private PieChartData pieData;
+    private PieChartView pieChart;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,11 +62,12 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragment = new FragmentDiary();
+        pieChart = findViewById(R.id.pieChartView);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(new FragmentStatistic(), "Statistic");
-        fragmentTransaction.add(new FragmentDiary(), "Diary");
-        fragmentTransaction.add(new FragmentDebug(), "Debug");
+        fragmentTransaction.add(new FragmentStatistic(), getString(R.string.title_statistic));
+        fragmentTransaction.add(new FragmentDiary(), getString(R.string.title_diary));
+        fragmentTransaction.add(new FragmentDebug(), getString(R.string.title_settings));
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
 
         bottomNavigationView = findViewById(R.id.navigation);
@@ -88,4 +99,35 @@ public class MainActivity extends AppCompatActivity{
     public void onClickAddLFNote(View view) {
         debug.addLFNote(db);
     }
+
+    public void onClickStatisticFavorite(View view) {
+        List<SliceValue> newValues = new ArrayList<>();
+        //set count All
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countAll(), ChartUtils.COLOR_BLUE));
+        //set count Favorite
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countLicuid(), ChartUtils.COLOR_ORANGE));
+        pieData = new PieChartData(newValues);
+//        pieData.setValues(newValues);
+        pieData.setHasLabels(true);
+        pieData.setHasLabelsOnlyForSelected(false);
+        pieData.setHasLabelsOutside(true);
+        pieData.setHasCenterCircle(false);
+        pieChart.setPieChartData(pieData);
+    }
+    public void onClickStatisticLicuid (View view) {
+        List<SliceValue> newValues = new ArrayList<>();
+        //set count All
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countAll(), ChartUtils.COLOR_BLUE));
+        //set count Licuid
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countLicuid(), ChartUtils.COLOR_VIOLET));
+        pieData = new PieChartData(newValues);
+//        pieData.setValues(newValues);
+        pieData.setHasLabels(true);
+        pieData.setHasLabelsOnlyForSelected(false);
+        pieData.setHasLabelsOutside(true);
+        pieData.setHasCenterCircle(false);
+        pieChart.setPieChartData(pieData);
+    }
+
+
 }

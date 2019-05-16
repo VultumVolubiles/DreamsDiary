@@ -42,8 +42,8 @@ public class NewNoteActivity extends AppCompatActivity {
         //adding fragments
         FragmentNote fragmentNote = new FragmentNote();
         fragmentNote.setNote(note);
-        adapter.AddFragment(fragmentNote, "Note");
-        adapter.AddFragment(new FragmentResources(), "Resources");
+        adapter.AddFragment(fragmentNote, getString(R.string.tabNote));
+        adapter.AddFragment(new FragmentResources(), getString(R.string.tabResources));
         //adapter setup
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

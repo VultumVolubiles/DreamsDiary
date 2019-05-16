@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:onClick="onClickSave"
-        android:text="Save"
+        android:text="@string/buttonSave"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:onClick="onClickCancel"
-        android:text="Cancel"
+        android:text="@string/buttonCancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

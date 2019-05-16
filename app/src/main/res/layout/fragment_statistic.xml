@@ -19,82 +19,191 @@
 
     </data>
 
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBackground">
-
-
-    <ImageView
-        android:id="@+id/imageViewStatistic"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/title_statistic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_statistic" />
-
-    <TextView
-        android:id="@+id/statistic_all"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/statisticContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Всего записей"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewStatistic" />
+        android:background="@color/colorBackground"
+        android:scrollbars="vertical">
 
-    <TextView
-        android:id="@+id/statistic_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="Избранные"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statistic_all" />
+        <lecho.lib.hellocharts.view.LineChartView
+            android:id="@+id/linearGraphic"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagePieCountLicuid" />
 
-    <TextView
-        android:id="@+id/statistic_licuid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="Осознанные"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statistic_favorite" />
+        <lecho.lib.hellocharts.view.PieChartView
+            android:id="@+id/pieChartView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/all"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@{all}"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toEndOf="@+id/statistic_all"
-        app:layout_constraintTop_toTopOf="@+id/statistic_all" />
+        <ImageView
+            android:id="@+id/imageLinearCountAll"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearGraphic"
+            app:srcCompat="@android:color/holo_blue_light" />
 
-    <TextView
-        android:id="@+id/fav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@{fav}"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toStartOf="@+id/all"
-        app:layout_constraintTop_toBottomOf="@+id/all" />
+        <TextView
+            android:id="@+id/statistic_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/statisticAllNotes"
+            android:textColor="@color/colorText"
+            app:layout_constraintStart_toEndOf="@+id/imageLinearCountAll"
+            app:layout_constraintTop_toBottomOf="@+id/linearGraphic" />
 
-    <TextView
-        android:id="@+id/lic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@{lic}"
-        android:textColor="@color/colorText"
-        app:layout_constraintStart_toStartOf="@+id/fav"
-        app:layout_constraintTop_toBottomOf="@+id/fav" />
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageLinearCountFavorite"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageLinearCountAll"
+            app:srcCompat="@color/colorIconEnabledF" />
+
+        <TextView
+            android:id="@+id/statistic_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/statisticFavoriteNotes"
+            android:textColor="@color/colorText"
+            app:layout_constraintStart_toEndOf="@+id/imageLinearCountFavorite"
+            app:layout_constraintTop_toBottomOf="@+id/statistic_all" />
+
+        <ImageView
+            android:id="@+id/imageLinearCountLicuid"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageLinearCountFavorite"
+            app:srcCompat="@color/colorIconEnabledL" />
+
+        <TextView
+            android:id="@+id/statistic_licuid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/statisticLicuidNotes"
+            android:textColor="@color/colorText"
+            app:layout_constraintStart_toEndOf="@+id/imageLinearCountLicuid"
+            app:layout_constraintTop_toBottomOf="@+id/statistic_favorite" />
+
+        <TextView
+            android:id="@+id/all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{all}"
+            android:textColor="@color/colorText"
+            app:layout_constraintStart_toEndOf="@+id/statistic_all"
+            app:layout_constraintTop_toTopOf="@+id/statistic_all" />
+
+        <TextView
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{fav}"
+            android:textColor="@color/colorText"
+            app:layout_constraintStart_toStartOf="@+id/all"
+            app:layout_constraintTop_toBottomOf="@+id/all" />
+
+        <TextView
+            android:id="@+id/lic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{lic}"
+            android:textColor="@color/colorText"
+            app:layout_constraintStart_toStartOf="@+id/fav"
+            app:layout_constraintTop_toBottomOf="@+id/fav" />
+
+        <ImageView
+            android:id="@+id/imagePieCountAll"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pieChartView"
+            app:srcCompat="@android:color/holo_blue_light" />
+
+        <TextView
+            android:id="@+id/textPieCountAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/statisticAllNotes"
+            android:textColor="@color/colorText"
+            app:layout_constraintBottom_toBottomOf="@+id/imagePieCountAll"
+            app:layout_constraintStart_toEndOf="@+id/imagePieCountAll" />
+
+        <ImageView
+            android:id="@+id/imagePieCountFavorite"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:onClick="onClickStatisticFavorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagePieCountAll"
+            app:srcCompat="@color/colorIconEnabledF" />
+
+        <TextView
+            android:id="@+id/textPieCountFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:onClick="onClickStatisticFavorite"
+            android:text="@string/statisticFavoriteNotes"
+            android:textColor="@color/colorText"
+            app:layout_constraintBottom_toBottomOf="@+id/imagePieCountFavorite"
+            app:layout_constraintStart_toEndOf="@+id/imagePieCountFavorite" />
+
+        <ImageView
+            android:id="@+id/imagePieCountLicuid"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:onClick="onClickStatisticLicuid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagePieCountFavorite"
+            app:srcCompat="@color/colorIconEnabledL" />
+
+        <TextView
+            android:id="@+id/textPieCountLicuid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:onClick="onClickStatisticLicuid"
+            android:text="@string/statisticLicuidNotes"
+            android:textColor="@color/colorText"
+            app:layout_constraintBottom_toBottomOf="@+id/imagePieCountLicuid"
+            app:layout_constraintStart_toEndOf="@+id/imagePieCountLicuid" />
+
+    </android.support.constraint.ConstraintLayout>
 </layout>
