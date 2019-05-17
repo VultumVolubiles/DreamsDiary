@@ -19,5 +19,11 @@
     <string name="statisticFavoriteNotes">Favorite</string>
     <string name="statisticLicuidNotes">Licuid</string>
     <string name="hintDateFormat">yyyy/mm/dd</string>
+    <string name="statisticOtherNotes">Usual</string>
+    <string name="statisticLinearChartTitle">Chart of adding notes in current month</string>
+    <string name="statisticPieChartTitleF">Ratio of usual notes to favorites</string>
+    <string name="statisticPieChartTitleL">Ratio of usual notes to licuids</string>
+    <string name="axisDays">Days</string>
+    <string name="axisNotes">Notes</string>
 
 </resources>

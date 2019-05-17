@@ -45,7 +45,7 @@ public class Notes implements Serializable {
         this.title = "";
         this.body = "";
         Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         this.date = format.format(date);
         this.color = "#DCD3D3";
         this.favorite = 0;
@@ -54,7 +54,7 @@ public class Notes implements Serializable {
     public Notes(String title, String body, Date date, String color, int favorite, int licuid) {
         this.title = title;
         this.body = body;
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         this.date = format.format(date);
         this.color = color;
         this.favorite = favorite;

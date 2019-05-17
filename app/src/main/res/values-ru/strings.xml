@@ -17,4 +17,10 @@
     <string name="statisticFavoriteNotes">Избранные</string>
     <string name="statisticLicuidNotes">Осознанные</string>
     <string name="hintDateFormat">гггг/мм/дд</string>
+    <string name="statisticOtherNotes">Обычные</string>
+    <string name="statisticLinearChartTitle">График добавления заметок в текущем месяце</string>
+    <string name="statisticPieChartTitleF">Соотношение обычных записей к избранным</string>
+    <string name="statisticPieChartTitleL">Соотношение обычных записей к осознанным</string>
+    <string name="axisDays">Дни</string>
+    <string name="axisNotes">Записи</string>
 </resources>

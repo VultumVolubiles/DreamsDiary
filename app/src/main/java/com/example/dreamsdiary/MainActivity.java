@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dreamsdiary.MainActivityFragments.FragmentDebug;
 import com.example.dreamsdiary.MainActivityFragments.FragmentDiary;
@@ -102,32 +104,54 @@ public class MainActivity extends AppCompatActivity{
 
     public void onClickStatisticFavorite(View view) {
         List<SliceValue> newValues = new ArrayList<>();
-        //set count All
-        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countAll(), ChartUtils.COLOR_BLUE));
-        //set count Favorite
-        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countLicuid(), ChartUtils.COLOR_ORANGE));
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countAll()-App.getInstance().getDatabase().notesDao().countFavorite(), ChartUtils.COLOR_BLUE));
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countFavorite(), ChartUtils.COLOR_ORANGE));
+        TextView text = this.findViewById(R.id.textPieCount);
+        text.setText(R.string.statisticFavoriteNotes);
+        text = this.findViewById(R.id.statisticPieChartTitle);
+        text.setText(R.string.statisticPieChartTitleF);
+        ImageView image = this.findViewById(R.id.imagePieCount);
+        image.setImageResource(R.color.colorIconEnabledF);
+        image = this.findViewById(R.id.buttonStatisticF);
+        image.setImageResource(R.drawable.ic_favorite_enabled);
+        image = this.findViewById(R.id.buttonStatisticL);
+        image.setImageResource(R.drawable.ic_licuid);
         pieData = new PieChartData(newValues);
-//        pieData.setValues(newValues);
         pieData.setHasLabels(true);
         pieData.setHasLabelsOnlyForSelected(false);
-        pieData.setHasLabelsOutside(true);
+        pieData.setHasLabelsOutside(false);
         pieData.setHasCenterCircle(false);
+        pieChart = this.findViewById(R.id.pieChartView);
         pieChart.setPieChartData(pieData);
     }
     public void onClickStatisticLicuid (View view) {
         List<SliceValue> newValues = new ArrayList<>();
-        //set count All
-        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countAll(), ChartUtils.COLOR_BLUE));
-        //set count Licuid
+        newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countAll()-App.getInstance().getDatabase().notesDao().countLicuid(), ChartUtils.COLOR_BLUE));
         newValues.add(new SliceValue(App.getInstance().getDatabase().notesDao().countLicuid(), ChartUtils.COLOR_VIOLET));
+        TextView text = this.findViewById(R.id.textPieCount);
+        text.setText(R.string.statisticLicuidNotes);
+        text = this.findViewById(R.id.statisticPieChartTitle);
+        text.setText(R.string.statisticPieChartTitleL);
+        ImageView image = this.findViewById(R.id.imagePieCount);
+        image.setImageResource(R.color.colorIconEnabledL);
+        image = this.findViewById(R.id.buttonStatisticL);
+        image.setImageResource(R.drawable.ic_licuid_enabled);
+        image = this.findViewById(R.id.buttonStatisticF);
+        image.setImageResource(R.drawable.ic_favorite);
         pieData = new PieChartData(newValues);
-//        pieData.setValues(newValues);
+        pieData = new PieChartData(newValues);
         pieData.setHasLabels(true);
         pieData.setHasLabelsOnlyForSelected(false);
-        pieData.setHasLabelsOutside(true);
+        pieData.setHasLabelsOutside(false);
         pieData.setHasCenterCircle(false);
+        pieChart = this.findViewById(R.id.pieChartView);
         pieChart.setPieChartData(pieData);
     }
 
+    public void setLangRu (View view) {
 
+    }
+
+    public void setLangEn (View view) {
+    }
 }

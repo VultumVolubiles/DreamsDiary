@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface NotesDao {
 
-    @Query("SELECT * FROM notes ORDER BY date")
+    @Query("SELECT * FROM notes ORDER BY date DESC")
     List<Notes> getAll();
 
     @Query("SELECT * FROM notes WHERE id = :id")
@@ -29,10 +29,10 @@ public interface NotesDao {
     @Query("SELECT * FROM notes WHERE favorite = 1")
     List<Notes> getFavorite();
 
-    @Query("SELECT date || '=' || COUNT(id) AS result FROM notes WHERE date = (SELECT DISTINCT date FROM notes WHERE date BETWEEN date('now','-30 day') AND date('now'))")
+    @Query("SELECT DISTINCT date || '=' || COUNT(id) AS result FROM notes WHERE date BETWEEN date('now','-30 day') AND date('now') GROUP BY date")
     List<String> getCountNotesForMonth();
 
-    @Query("SELECT DISTINCT date FROM notes WHERE date BETWEEN date('now','-30 day') AND date('now')")
+    @Query("SELECT date('now','-30 day')")
     List<String> getDates();
 
     @Insert
