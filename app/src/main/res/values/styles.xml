@@ -4,11 +4,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="android:colorForeground">@color/colorText</item>
-        <item name="android:weekNumberColor">@color/colorText</item>
+        <!--<item name="android:colorForeground">@color/colorText</item>-->
+        <!--<item name="android:weekNumberColor">@color/colorText</item>-->
         <item name="tabTextColor">@color/colorText</item>
 
     </style>

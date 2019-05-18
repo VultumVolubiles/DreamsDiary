@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dreamsdiary.MainActivityFragments.FragmentDebug;
 import com.example.dreamsdiary.MainActivityFragments.FragmentDiary;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity{
     private DiaryDatabase db = App.getInstance().getDatabase();
     private PieChartData pieData;
     private PieChartView pieChart;
+    private static long back_pressed;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -153,5 +155,28 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void setLangEn (View view) {
+    }
+
+    @Override
+    public void onBackPressed () {
+        int id = this.bottomNavigationView.getSelectedItemId();
+        switch (id) {
+            case R.id.navigation_diary: {
+                if (back_pressed + 2000 > System.currentTimeMillis())
+                    finish();
+                else
+                    Toast.makeText(getBaseContext(), getText(R.string.exitToast),
+                            Toast.LENGTH_SHORT).show();
+                back_pressed = System.currentTimeMillis();
+                break;
+            }
+            default: {
+                this.fragmentTransaction = fragmentManager.beginTransaction();
+                this.fragment = new FragmentDiary();
+                this.fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+                break;
+            }
+        }
+
     }
 }

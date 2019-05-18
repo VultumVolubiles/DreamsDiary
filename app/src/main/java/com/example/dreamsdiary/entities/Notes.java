@@ -41,7 +41,6 @@ public class Notes implements Serializable {
 
 
     public Notes() {
-//        this.id = 1;
         this.title = "";
         this.body = "";
         Date date = new Date();
